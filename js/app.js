@@ -8,16 +8,69 @@ const loadCategoryData = () => {
 const displayCategoryData = (newses) => {
   const categoryContainer = document.getElementById("category-container");
   for (const news of newses) {
-    console.log(news);
+    // console.log(news);
     const li = document.createElement("li");
-    li.classList.add('hover:bg-gray-100', 'py-3', 'px-2', 'rounded-lg', 'duration-200')
+    li.classList.add(
+      "hover:bg-gray-300",
+      "hover:text-gray-900",
+      "py-3",
+      "px-2",
+      "rounded-lg",
+      "duration-200"
+    );
     li.innerHTML = `
-        <button
-        class="block py-2 pr-4 pl-3 text-gray-400 bg-blue-700 rounded md:bg-transparent md:text-gray-400 md:p-0 dark:text-white"
+        <button onclick="loadNewsCategory('${news.category_id}','${news.category_name}')"
+        class="block py-2 pr-4 pl-3 text-black  rounded md:bg-transparent md:text-gray-400 md:p-0 "
         aria-current="page">${news.category_name}</button>
         `;
-      categoryContainer.appendChild(li);
+    categoryContainer.appendChild(li);
   }
 };
+
+const loadNewsCategory = (id, CategoryName) => {
+  loadingSpinner(true);
+  const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayNewsCategory(data.data, CategoryName));
+};
+
+const displayNewsCategory = (newses, CategoryName) => {
+  const newsCount = document.getElementById("news-count");
+  newsCount.textContent = '';
+  const div = document.createElement("div");
+  div.classList.add('bg-white', 'px-4', 'py-3', 'container', 'mx-auto', 'font-semibold', 'rounded-md')
+  div.innerText = `${newses.length ? newses.length : 'No'} items found for ${CategoryName}`;
+  newsCount.appendChild(div);
+
+  const newsContainer = document.getElementById('news-container');
+  newsContainer.textContent = '';
+  for (const news of newses) {
+    console.log(news);
+    const div = document.createElement('div');
+    div.classList.add('flex', 'flex-col', 'bg-white', 'rounded-lg', 'shadow-md', 'md:flex-row','w-full', 'mb-6', 'py-4', 'px-4');
+    div.innerHTML = `
+        <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+        src="${news.thumbnail_url}" alt="">
+        <div class="flex flex-col p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">${news.title}</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${news.details.slice(0, 300) +
+      '...'}</p>
+    </div>
+    `
+    newsContainer.appendChild(div);
+  }
+  loadingSpinner(false);
+};
+
+
+const loadingSpinner = (isLoading) => {
+  const loader = document.getElementById('loader');
+  if (isLoading) {
+    loader.classList.remove('hidden');
+  } else {
+    loader.classList.add('hidden');
+  }
+}
 
 loadCategoryData();
