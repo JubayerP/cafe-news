@@ -59,14 +59,15 @@ const displayNewsCategory = (newses, CategoryName) => {
       <div class="flex items-center justify-between mt-10">
           <div class="flex items-center justify-evenly w-[20%]">
             <img class="w-10 h-10 rounded-full" src="${news.author.img}" alt="" />
-            <span class="text-gray-600 font-semibold"><p>${news.author.name}</p> <p>${news.author.published_date}</p></span>
+            <span class="text-gray-600 font-semibold"><p>${news.author.name ? news.author.name : 'No Name'}</p> <p>${news.author.published_date}</p></span>
           </div>
           <div class="flex items-center">
           <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-          <span class="font-semibold text-gray-600">${news.total_view}</span>
+          <span class="font-semibold text-gray-600">${news.total_view ? news.total_view : 'No Views'}</span>
           </div>
           <div>
-          <svg class="w-6 h-6 text-[#003554] cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          
+          <svg data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="showNewsDetails('${news._id}')" class="w-6 h-6 text-[#003554] cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </div>
         </div>
     </div>
@@ -75,6 +76,12 @@ const displayNewsCategory = (newses, CategoryName) => {
   }
   loadingSpinner(false);
 };
+
+
+const showNewsDetails = (id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${id}`;
+  console.log(url);
+}
 
 
 const loadingSpinner = (isLoading) => {
