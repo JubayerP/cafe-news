@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,21 +9,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
 </head>
+
 <body>
     <!-- header -->
     <header class="container mx-auto">
         <nav class="flex justify-between items-center h-16">
             <div>
-                <h4 class="text-2xl font-semibold"><span class="text-white bg-[#003554] px-2 py-.5 rounded-md">Cafe</span> News</h4>
+                <h4 class="text-2xl font-semibold"><span
+                        class="text-white bg-[#003554] px-2 py-.5 rounded-md">Cafe</span> News</h4>
             </div>
             <div class="text-xl font-medium flex justify-between w-32">
                 <a href="#" class="text-[#003554]">News</a>
                 <a href="#">Blog</a>
             </div>
         </nav>
+
+        <!-- Line -->
+        <div class="h-[1px] w-full bg-gray-400"></div>
+
+
+        <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+            <div class="container mx-auto">
+                    <ul id="category-container"
+                        class="flex justify-evenly p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:border-gray-700">
+                    </ul>
+            </div>
+        </nav>
+
     </header>
 
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
     <script src="./js/app.js"></script>
 </body>
+
 </html>
