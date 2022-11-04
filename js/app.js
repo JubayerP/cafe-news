@@ -113,7 +113,8 @@ const loadNewsDetails = (id) => {
   const url = `https://openapi.programming-hero.com/api/news/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayNewsDetails(data.data[0]));
+    .then((data) => displayNewsDetails(data.data[0]))
+  .catch((error) => console.log(error))
 };
 
 const displayNewsDetails = (news) => {
@@ -164,7 +165,7 @@ const displayNewsDetails = (news) => {
       </div>
 
 
-      <div class="flex flex-row justify-between items-center">
+      <div class="flex flex-row justify-around items-center mt-5">
           <div class="flex flex-col justify-center items-center">
           <img class="w-[40px] h-[40px] rounded-full" src="${news.author.img}" alt="" />
           <p class="font-semibold">${news.author.name}</p>
