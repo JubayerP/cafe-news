@@ -33,7 +33,8 @@ const loadNewsCategory = (id, CategoryName) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayNewsCategory(data.data, CategoryName));
+    .then((data) => displayNewsCategory(data.data, CategoryName))
+  .catch((error) => console.log(error))
 };
 
 const displayNewsCategory = (newses, CategoryName) => {
@@ -90,7 +91,7 @@ const displayNewsCategory = (newses, CategoryName) => {
             }" alt="" />
             <span class="text-gray-600 font-semibold"><p>${
               news.author.name ? news.author.name : "No Name"
-            }</p> <p>${news.author.published_date}</p></span>
+            }</p> <p>${news.author.published_date ? news.author.published_date : 'No Date'}</p></span>
           </div>
           <div class="flex items-center">
           <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
@@ -179,7 +180,7 @@ const displayNewsDetails = (news) => {
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
             </svg>
 
-            <p class="font-semibold">Publish Date: ${news.author.published_date.slice(0,10)}</p>
+            <p class="font-semibold">Publish Date: ${news.author.published_date ? news.author.published_date.slice(0,10) : 'No Date'}</p>
           </div>
       </div>
 
