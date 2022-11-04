@@ -125,15 +125,16 @@ const displayNewsDetails = (news) => {
   class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
   <div
       class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-      <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">Modal
-          title</h5>
+      <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">${news.title}</h5>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" data-bs-dismiss="modal"/>
         </svg>
         
   </div>
   <div class="modal-body relative p-4">
-      Modal body text goes here.
+  <img class="pb-5" src="${news.image_url}" alt="" />
+      <p class="pb-5">${news.details}</p>
+      <div class="h-[3px] rounded bg-[#003554]"></div>
   </div>
   <div
       class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
