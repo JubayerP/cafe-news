@@ -113,6 +113,7 @@ const displayNewsCategory = (newses, CategoryName) => {
 };
 
 const loadNewsDetails = (id) => {
+  loadingSpinner(true);
   const url = `https://openapi.programming-hero.com/api/news/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -204,6 +205,7 @@ ease-in-out" data-bs-dismiss="modal">Close</button>
   </div>
 </div>
   `;
+  loadingSpinner(false);
   // modalContainer.appendChild(div);
 };
 
