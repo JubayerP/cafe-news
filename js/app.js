@@ -36,6 +36,8 @@ const loadNewsCategory = (id, CategoryName) => {
 };
 
 const displayNewsCategory = (newses, CategoryName) => {
+  console.log(newses);
+  newses.sort((a, b) =>  b.total_view - a.total_view);
   const newsCount = document.getElementById("news-count");
   newsCount.textContent = "";
   const div = document.createElement("div");
