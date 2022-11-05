@@ -85,7 +85,7 @@ const displayNewsCategory = (newses, CategoryName) => {
           news.details.slice(0, 300) + "..."
         }</p>
       <div class="flex items-center justify-between mt-10">
-          <div class="flex items-center justify-evenly w-[20%]">
+          <div class="flex items-center justify-evenly md:w-[20%]">
             <img class="w-10 h-10 rounded-full" src="${
               news.author.img
             }" alt="" />
